@@ -1,0 +1,17 @@
+version: '2.3'
+services:
+    dev:
+        # runtime: nvidia
+        build:
+          context: ./
+          dockerfile: ./Dockerfile
+        image: contact-detection:$USER
+        container_name: contact-detection-$USER
+        volumes:
+            - ./:/app
+            - ./data:/data
+            - ./output:/output
+        ipc: host
+        shm_size: 8G
+        command: /bin/bash -c "python lib/run.py --debug"
+        network_mode: none
