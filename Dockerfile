@@ -24,6 +24,11 @@ WORKDIR $PROJECT_ROOT
 
 RUN pip install -r requirements.txt
 
+WORKDIR /opt
+
+RUN chmod +x $PROJECT_ROOT$DATA_ROOT/get_model_weights.sh
+RUN $PROJECT_ROOT$DATA_ROOT/get_model_weights.sh
+
 WORKDIR $PROJECT_ROOT
 
 ENV TRANSFORMERS_OFFLINE 1

@@ -74,7 +74,7 @@ class Test:
         contacts_prediction = pd.DataFrame(columns=['index', 'prediction'])
         contacts_prediction['index'] = test_df.index
 
-        model = Classifier()
+        model = Classifier(load_model=True, files_path='/opt')
         prediction = model.predict(test_df)
         contacts_prediction['prediction'] = prediction
 
