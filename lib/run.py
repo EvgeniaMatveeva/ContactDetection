@@ -12,7 +12,7 @@ from model import Classifier
 class Test:
     train_csv = 'train.csv'
     val_csv = 'val.csv'
-    test_csv = 'test_data.csv'
+    test_csv = 'test.csv'
     contacts_prediction = 'contacts_prediction.csv'
     contacts_segmentation = 'contacts_segmentation.csv'
 
@@ -37,15 +37,6 @@ class Test:
         if not os.path.exists(path):
             self.logger.info(f'File {path} not found')
             raise ValueError('train not found')
-        df = pd.read_csv(path)
-
-        return df
-
-    def val(self) -> pd.DataFrame:
-        path = os.path.join(self.data_dir, self.val_csv)
-        if not os.path.exists(path):
-            self.logger.info(f'File {path} not found')
-            raise ValueError('val not found')
         df = pd.read_csv(path)
 
         return df
@@ -78,7 +69,7 @@ class Test:
         self.logger.info('Done')
 
     def process(self) -> Tuple[pd.DataFrame, pd.DataFrame]:
-        test_df = self.val() if self.debug else self.test()
+        test_df = self.test()
 
         contacts_prediction = pd.DataFrame(columns=['index', 'prediction'])
         contacts_prediction['index'] = test_df.index

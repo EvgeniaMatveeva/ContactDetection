@@ -15,4 +15,4 @@ wget --load-cookies /tmp/cookies.txt \
 --save-cookies /tmp/cookies.txt --keep-session-cookies --no-check-certificate \
 'https://docs.google.com/uc?export=download&id=1rEwfbIlwKAPlAzIHP5oJHgo4bbRLi996' -O- | \
 sed -rn 's/.*confirm=([0-9A-Za-z_]+).*/\1\n/p')&id=1rEwfbIlwKAPlAzIHP5oJHgo4bbRLi996" \
--O val.csv && rm -rf /tmp/cookies.txt
+-O test.csv && rm -rf /tmp/cookies.txt
