@@ -80,11 +80,12 @@ class Test:
 
         contacts_segmentation = pd.DataFrame(columns=['index', 'start', 'finish'])
         contacts_segmentation['index'] = test_df.index
-        start, finish = model.predict_contact_inds(test_df)
+        prediction_class = [round(p) for p in prediction]
+        start, finish = model.predict_contact_inds(test_df, prediction_class)
         contacts_segmentation['start'] = start
         contacts_segmentation['finish'] = finish
 
-        return contacts_prediction, contacts_prediction
+        return contacts_prediction, contacts_segmentation
 
 
 if __name__ == '__main__':
